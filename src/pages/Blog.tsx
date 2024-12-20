@@ -1,4 +1,6 @@
 import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const BLOG_POSTS = [
   {
@@ -25,22 +27,28 @@ const BLOG_POSTS = [
 ];
 
 const Blog = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen gradient-background">
       <Navbar />
       
       <div className="pt-32 px-4 max-w-7xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12">Blog Posts</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-12 text-center">Blog Posts</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {BLOG_POSTS.map((post) => (
-            <article key={post.id} className="blog-card glass">
+            <article 
+              key={post.id} 
+              className="blog-card glass cursor-pointer"
+              onClick={() => navigate(`/blog/${post.id}`)}
+            >
               <img
                 src={post.image}
                 alt={post.title}
                 className="w-full h-48 object-cover rounded-t-xl"
               />
-              <div className="p-6">
+              <div className="p-6 text-center">
                 <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
                 <p className="text-gray-300 mb-4">{post.excerpt}</p>
                 <span className="text-sm text-gray-400">{post.readTime}</span>
@@ -49,6 +57,8 @@ const Blog = () => {
           ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

@@ -6,13 +6,25 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
 const Index = () => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") || "dark";
+    }
+    return "dark";
+  });
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    document.documentElement.classList.toggle("dark");
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   const handleProjectClick = (projectId: number) => {
@@ -68,33 +80,47 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="min-h-screen flex items-center justify-center px-4 py-20">
-        <div className="glass rounded-2xl p-8 max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-8 text-center">About Me</h2>
-          <p className="text-lg text-gray-200 mb-8">
-            I'm a third-year Computer Science undergraduate at Vellore Institute of Technology, 
-            with a second degree in Data Science and Programming from IIT Madras. Passionate about 
-            technology, research, and continuously learning new skills to solve complex problems.
-          </p>
-          <div className="grid grid-cols-3 gap-4 text-center mb-8">
-            <div className="glass p-4 rounded-xl">
-              <div className="text-2xl font-bold">8.88</div>
-              <div className="text-sm text-gray-300">CGPA</div>
+      {/* Timeline Section */}
+      <section id="timeline" className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">Education & Experience</h2>
+          <div className="relative">
+            {/* Line down the middle */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-white/20"></div>
+            
+            {/* Timeline items */}
+            <div className="space-y-12">
+              <TimelineItem 
+                title="Vellore Institute of Technology"
+                subtitle="B.Tech in Computer Science"
+                date="2021 - 2025"
+                side="left"
+              />
+              <TimelineItem 
+                title="Indian Institute of Technology, Madras"
+                subtitle="B.Sc in Data Science and Programming (Online)"
+                date="2021 - 2025"
+                side="right"
+              />
+              <TimelineItem 
+                title="Founding Member"
+                subtitle="The Opportunities Portal"
+                date="November 2022 – November 2023"
+                side="left"
+              />
+              <TimelineItem 
+                title="Research Intern"
+                subtitle="National University of Singapore (NUS)"
+                date="December 2023 – January 2024"
+                side="right"
+              />
+              <TimelineItem 
+                title="Board Member"
+                subtitle="Leo Club, VIT"
+                date="April 2023 – February 2024"
+                side="left"
+              />
             </div>
-            <div className="glass p-4 rounded-xl">
-              <div className="text-2xl font-bold">04+</div>
-              <div className="text-sm text-gray-300">Projects</div>
-            </div>
-            <div className="glass p-4 rounded-xl">
-              <div className="text-2xl font-bold">02+</div>
-              <div className="text-sm text-gray-300">Months Experience</div>
-            </div>
-          </div>
-          <div className="text-center">
-            <Button className="glass hover:bg-white/20">
-              Download Resume
-            </Button>
           </div>
         </div>
       </section>
@@ -151,6 +177,29 @@ const Index = () => {
       </section>
 
       <Footer />
+    </div>
+  );
+};
+
+const TimelineItem = ({ title, subtitle, date, side }: { 
+  title: string; 
+  subtitle: string; 
+  date: string; 
+  side: "left" | "right"; 
+}) => {
+  return (
+    <div className={`flex ${side === 'right' ? 'flex-row-reverse' : ''} items-center justify-center`}>
+      <div className={`w-5/12 ${side === 'right' ? 'text-right' : ''}`}>
+        <div className="glass p-6 rounded-xl">
+          <h3 className="text-xl font-bold">{title}</h3>
+          <p className="text-gray-300 mt-2">{subtitle}</p>
+          <p className="text-sm text-gray-400 mt-1">{date}</p>
+        </div>
+      </div>
+      <div className="w-2/12 flex justify-center">
+        <div className="w-4 h-4 bg-white rounded-full relative z-10"></div>
+      </div>
+      <div className="w-5/12"></div>
     </div>
   );
 };
