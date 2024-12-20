@@ -1,15 +1,22 @@
 import { useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const [theme, setTheme] = useState("dark");
+  const navigate = useNavigate();
 
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     document.documentElement.classList.toggle("dark");
+  };
+
+  const handleProjectClick = (projectId: number) => {
+    navigate(`/project/${projectId}`);
   };
 
   return (
@@ -99,27 +106,35 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
+                id: 1,
                 title: "Deepfake Detection using Deep Learning",
                 description: "Designed and developed a custom CNN for deepfake detection, achieving over 97% accuracy.",
                 image: "/assets/img/portfolio1.png"
               },
               {
+                id: 2,
                 title: "E-mail Phishing Detection",
                 description: "Developed an email phishing detection model using NLP techniques, achieving over 98% accuracy.",
                 image: "/assets/img/portfolio2.png"
               },
               {
+                id: 3,
                 title: "VCYou – Startup Success Prediction",
                 description: "Developed a machine learning model to assist venture capitalists in predicting startup success.",
                 image: "/assets/img/portfolio3.png"
               },
               {
+                id: 4,
                 title: "Real-estate Price Predictor",
                 description: "Developed an efficient price predictor using machine learning, achieving over 98% accuracy.",
                 image: "/assets/img/portfolio4.png"
               }
-            ].map((project, index) => (
-              <div key={index} className="glass rounded-xl overflow-hidden blog-card">
+            ].map((project) => (
+              <div 
+                key={project.id} 
+                className="glass rounded-xl overflow-hidden blog-card cursor-pointer"
+                onClick={() => handleProjectClick(project.id)}
+              >
                 <img 
                   src={project.image} 
                   alt={project.title}
@@ -134,6 +149,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };

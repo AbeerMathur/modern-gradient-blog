@@ -29,10 +29,17 @@ export const Navbar = () => {
           </Link>
           
           <div className="hidden md:flex items-center space-x-4">
-            <a href="#home" className="nav-link">Home</a>
             <a href="#about" className="nav-link">About</a>
             <a href="#portfolio" className="nav-link">Portfolio</a>
             <Link to="/blog" className="nav-link">Blog</Link>
+            <a 
+              href="https://linktr.ee/abeermathur" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="nav-link"
+            >
+              Linktree
+            </a>
           </div>
         </div>
       </div>
