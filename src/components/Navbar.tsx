@@ -23,15 +23,15 @@ export const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? "py-2" : "py-4"
     }`}>
-      <div className="glass mx-4 sm:mx-auto max-w-7xl px-4 sm:px-6 rounded-full">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center space-x-3">
+      <div className="glass mx-4 sm:mx-auto max-w-7xl px-4 sm:px-6 rounded-2xl">
+        <div className="flex items-center justify-between h-14">
+          <Link to="/" className="flex items-center space-x-2">
             <img 
               src="/assets/img/logo.jpg" 
               alt="Logo" 
-              className="w-8 h-8 rounded-full"
+              className="w-7 h-7 rounded-full"
             />
-            <span className="text-xl font-bold text-white">Abeer Mathur</span>
+            <span className="text-lg font-bold text-white">Abeer Mathur</span>
           </Link>
           
           {/* Desktop Menu */}
@@ -51,37 +51,37 @@ export const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+            className="md:hidden p-1.5 rounded-lg hover:bg-white/10 transition-colors"
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6 text-white" />
+              <X className="h-5 w-5 text-white" />
             ) : (
-              <Menu className="h-6 w-6 text-white" />
+              <Menu className="h-5 w-5 text-white" />
             )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden glass mt-2 rounded-3xl p-4 space-y-3">
+          <div className="md:hidden py-3 space-y-1 border-t border-white/10 mt-2">
             <a 
               href="#about" 
-              className="block px-4 py-2 text-white hover:bg-white/10 rounded-lg text-center"
+              className="block py-2 text-sm text-white hover:bg-white/10 text-center"
               onClick={() => setIsMenuOpen(false)}
             >
               About
             </a>
             <a 
               href="#portfolio" 
-              className="block px-4 py-2 text-white hover:bg-white/10 rounded-lg text-center"
+              className="block py-2 text-sm text-white hover:bg-white/10 text-center"
               onClick={() => setIsMenuOpen(false)}
             >
               Portfolio
             </a>
             <Link 
               to="/blog" 
-              className="block px-4 py-2 text-white hover:bg-white/10 rounded-lg text-center"
+              className="block py-2 text-sm text-white hover:bg-white/10 text-center"
               onClick={() => setIsMenuOpen(false)}
             >
               Blog
@@ -90,7 +90,7 @@ export const Navbar = () => {
               href="https://linktr.ee/abeermathur" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="block px-4 py-2 text-white hover:bg-white/10 rounded-lg text-center"
+              className="block py-2 text-sm text-white hover:bg-white/10 text-center"
               onClick={() => setIsMenuOpen(false)}
             >
               Linktree
