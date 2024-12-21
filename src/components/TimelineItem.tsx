@@ -1,17 +1,28 @@
 interface TimelineItemProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   date: string;
-  side: "left" | "right";
+  side?: "left" | "right";
+  organization?: string;
+  description?: string;
 }
 
-export const TimelineItem = ({ title, subtitle, date, side }: TimelineItemProps) => {
+const TimelineItem = ({ 
+  title, 
+  subtitle, 
+  date, 
+  side, 
+  organization, 
+  description 
+}: TimelineItemProps) => {
   return (
     <div className={`flex ${side === 'right' ? 'flex-row-reverse' : ''} items-center justify-center`}>
       <div className={`w-5/12 ${side === 'right' ? 'text-right' : ''}`}>
         <div className="glass p-6 rounded-xl">
           <h3 className="text-xl font-bold">{title}</h3>
-          <p className="text-gray-300 mt-2">{subtitle}</p>
+          {subtitle && <p className="text-gray-300 mt-2">{subtitle}</p>}
+          {organization && <p className="text-gray-300 mt-2">{organization}</p>}
+          {description && <p className="text-gray-300 mt-2">{description}</p>}
           <p className="text-sm text-gray-400 mt-1">{date}</p>
         </div>
       </div>
@@ -22,3 +33,5 @@ export const TimelineItem = ({ title, subtitle, date, side }: TimelineItemProps)
     </div>
   );
 };
+
+export default TimelineItem;
