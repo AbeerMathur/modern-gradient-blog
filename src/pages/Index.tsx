@@ -35,13 +35,22 @@ const Index = () => {
       <Button 
         variant="ghost" 
         size="icon" 
-        className="fixed top-24 right-4 z-50 glass"
+        className="fixed top-24 right-4 z-50 glass rounded-full w-10 h-10 flex items-center justify-center"
         onClick={toggleTheme}
       >
         {theme === "dark" ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
       </Button>
 
       <Hero />
+      <div id="about" className="py-20">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">About Me</h2>
+          <p className="text-lg mb-6 text-center">
+            I am a Computer Science student at Vellore Institute of Technology, passionate about technology and innovation. 
+            I'm proficient in machine learning and deep learning methodologies.
+          </p>
+        </div>
+      </div>
       <TimelineSection />
       <Portfolio />
       <Footer />

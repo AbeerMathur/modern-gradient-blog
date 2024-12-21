@@ -23,7 +23,7 @@ export const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? "py-2" : "py-4"
     }`}>
-      <div className="glass mx-auto max-w-7xl px-4 sm:px-6 rounded-full">
+      <div className="glass mx-4 sm:mx-auto max-w-7xl px-4 sm:px-6 rounded-full">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-3">
             <img 
@@ -64,24 +64,24 @@ export const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden glass mt-2 rounded-lg p-4 space-y-3">
+          <div className="md:hidden glass mt-2 rounded-3xl p-4 space-y-3">
             <a 
               href="#about" 
-              className="block px-4 py-2 text-white hover:bg-white/10 rounded-lg"
+              className="block px-4 py-2 text-white hover:bg-white/10 rounded-lg text-center"
               onClick={() => setIsMenuOpen(false)}
             >
               About
             </a>
             <a 
               href="#portfolio" 
-              className="block px-4 py-2 text-white hover:bg-white/10 rounded-lg"
+              className="block px-4 py-2 text-white hover:bg-white/10 rounded-lg text-center"
               onClick={() => setIsMenuOpen(false)}
             >
               Portfolio
             </a>
             <Link 
               to="/blog" 
-              className="block px-4 py-2 text-white hover:bg-white/10 rounded-lg"
+              className="block px-4 py-2 text-white hover:bg-white/10 rounded-lg text-center"
               onClick={() => setIsMenuOpen(false)}
             >
               Blog
@@ -90,7 +90,7 @@ export const Navbar = () => {
               href="https://linktr.ee/abeermathur" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="block px-4 py-2 text-white hover:bg-white/10 rounded-lg"
+              className="block px-4 py-2 text-white hover:bg-white/10 rounded-lg text-center"
               onClick={() => setIsMenuOpen(false)}
             >
               Linktree
