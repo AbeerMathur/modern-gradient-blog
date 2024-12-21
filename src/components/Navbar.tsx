@@ -36,8 +36,8 @@ export const Navbar = () => {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="#about" className="nav-link text-white">About</a>
-            <a href="#portfolio" className="nav-link text-white">Portfolio</a>
+            <Link to="/#about" className="nav-link text-white">About</Link>
+            <Link to="/#portfolio" className="nav-link text-white">Portfolio</Link>
             <Link to="/blog" className="nav-link text-white">Blog</Link>
             <a 
               href="https://linktr.ee/abeermathur" 
@@ -65,20 +65,20 @@ export const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-3 space-y-1 border-t border-white/10 mt-2">
-            <a 
-              href="#about" 
+            <Link 
+              to="/#about" 
               className="block py-2 text-sm text-white hover:bg-white/10 text-center"
               onClick={() => setIsMenuOpen(false)}
             >
               About
-            </a>
-            <a 
-              href="#portfolio" 
+            </Link>
+            <Link 
+              to="/#portfolio" 
               className="block py-2 text-sm text-white hover:bg-white/10 text-center"
               onClick={() => setIsMenuOpen(false)}
             >
               Portfolio
-            </a>
+            </Link>
             <Link 
               to="/blog" 
               className="block py-2 text-sm text-white hover:bg-white/10 text-center"

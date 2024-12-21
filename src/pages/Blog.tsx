@@ -1,6 +1,7 @@
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const BLOG_POSTS = [
   {
@@ -28,6 +29,10 @@ const BLOG_POSTS = [
 
 const Blog = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen gradient-background">
