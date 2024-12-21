@@ -15,6 +15,14 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleInternalLink = (id: string) => {
+    setIsMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -36,8 +44,8 @@ export const Navbar = () => {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/#about" className="nav-link text-white">About</Link>
-            <Link to="/#portfolio" className="nav-link text-white">Portfolio</Link>
+            <button onClick={() => handleInternalLink('about')} className="nav-link text-white">About</button>
+            <button onClick={() => handleInternalLink('portfolio')} className="nav-link text-white">Portfolio</button>
             <Link to="/blog" className="nav-link text-white">Blog</Link>
             <a 
               href="https://linktr.ee/abeermathur" 
@@ -65,20 +73,18 @@ export const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-3 space-y-1 border-t border-white/10 mt-2">
-            <Link 
-              to="/#about" 
-              className="block py-2 text-sm text-white hover:bg-white/10 text-center"
-              onClick={() => setIsMenuOpen(false)}
+            <button 
+              onClick={() => handleInternalLink('about')}
+              className="block w-full py-2 text-sm text-white hover:bg-white/10 text-center"
             >
               About
-            </Link>
-            <Link 
-              to="/#portfolio" 
-              className="block py-2 text-sm text-white hover:bg-white/10 text-center"
-              onClick={() => setIsMenuOpen(false)}
+            </button>
+            <button 
+              onClick={() => handleInternalLink('portfolio')}
+              className="block w-full py-2 text-sm text-white hover:bg-white/10 text-center"
             >
               Portfolio
-            </Link>
+            </button>
             <Link 
               to="/blog" 
               className="block py-2 text-sm text-white hover:bg-white/10 text-center"

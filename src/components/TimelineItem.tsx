@@ -11,12 +11,12 @@ const TimelineItem = ({
   title, 
   subtitle, 
   date, 
-  side, 
+  side = "left", 
   organization, 
   description 
 }: TimelineItemProps) => {
   return (
-    <div className={`flex ${side === 'right' ? 'flex-row-reverse' : ''} items-center justify-center`}>
+    <div className={`flex ${side === 'right' ? 'flex-row-reverse' : ''} items-center w-full`}>
       <div className={`w-5/12 ${side === 'right' ? 'text-right' : ''}`}>
         <div className="glass p-6 rounded-xl">
           <h3 className="text-xl font-bold">{title}</h3>
