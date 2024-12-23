@@ -52,11 +52,25 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   * {
     @apply border-border;
   }
+  
   body {
     @apply bg-background text-white font-sans transition-colors duration-300;
+  }
+
+  /* Reveal animation for sections */
+  .reveal {
+    @apply opacity-0 translate-y-10 transition-all duration-700;
+  }
+
+  .reveal.active {
+    @apply opacity-100 translate-y-0;
   }
 }
 

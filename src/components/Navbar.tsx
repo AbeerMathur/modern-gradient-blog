@@ -15,6 +15,24 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Add scroll reveal effect
+  useEffect(() => {
+    const handleReveal = () => {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleReveal);
+    handleReveal(); // Initial check
+    return () => window.removeEventListener('scroll', handleReveal);
+  }, []);
+
   const handleInternalLink = (id: string) => {
     setIsMenuOpen(false);
     const element = document.getElementById(id);
@@ -31,7 +49,7 @@ export const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? "py-2" : "py-4"
     }`}>
-      <div className="glass mx-4 sm:mx-auto max-w-7xl px-4 sm:px-6 rounded-2xl">
+      <div className="glass mx-4 sm:mx-auto max-w-7xl px-6 rounded-full border border-white/20">
         <div className="flex items-center justify-between h-14">
           <Link to="/" className="flex items-center space-x-2">
             <img 
